@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>秦國維(麥哥/Michael) 專業名片 V4</title>
+    <title>秦國維(Michael/麥哥) 專業名片 V5</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: "Microsoft JhengHei", sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f7f9fc; }
@@ -19,7 +19,7 @@
         <h2>數位名片發送器</h2>
         <p>宏國通訊處<br>保險行銷 | 組織經營 | AI應用</p>
         <button class="btn-send" onclick="sendFlex()">選擇好友發送名片</button>
-        <div class="version-tag">系統版本：V4</div>
+        <div class="version-tag">系統版本：V5</div>
     </div>
 
     <script>
@@ -36,7 +36,7 @@
                     const result = await liff.shareTargetPicker([
                         {
                             "type": "flex",
-                            "altText": "秦國維(麥哥/Michael) 專業數位名片 (V4)",
+                            "altText": "秦國維(Michael/麥哥) 專業數位名片 (V5)",
                             "contents": {
                                 "type": "bubble",
                                 "header": {
@@ -46,15 +46,24 @@
                                 },
                                 "body": {
                                     "type": "box", "layout": "vertical", "contents": [
-                                        { "type": "text", "text": "秦國維(麥哥/Michael)", "weight": "bold", "size": "xl", "margin": "md", "wrap": true },
+                                        { "type": "text", "text": "秦國維(Michael/麥哥)", "weight": "bold", "size": "xl", "margin": "md", "wrap": true },
                                         { "type": "text", "text": "保險行銷與組織發展專家", "size": "sm", "color": "#00B900", "weight": "bold" },
                                         { "type": "separator", "margin": "lg" },
                                         { "type": "box", "layout": "vertical", "margin": "lg", "spacing": "sm", "contents": [
-                                            { "type": "text", "text": "💡 專業理財諮詢", "size": "sm", "color": "#666666" },
-                                            { "type": "text", "text": "🚀 團隊組織經營", "size": "sm", "color": "#666666" },
-                                            { "type": "text", "text": "🤖 AI工具應用導入", "size": "sm", "color": "#666666" }
+                                            { 
+                                                "type": "text", "text": "💡 專業保險諮詢", "size": "sm", "color": "#0000FF", "decoration": "underline",
+                                                "action": { "type": "uri", "label": "諮詢", "uri": "https://line.me/ti/p/uvO4HDn1_X" }
+                                            },
+                                            { 
+                                                "type": "text", "text": "🚀 團隊組織經營", "size": "sm", "color": "#0000FF", "decoration": "underline",
+                                                "action": { "type": "uri", "label": "經營", "uri": "https://line.me/ti/p/uvO4HDn1_X" }
+                                            },
+                                            { 
+                                                "type": "text", "text": "🤖 AI工具應用導入", "size": "sm", "color": "#0000FF", "decoration": "underline",
+                                                "action": { "type": "uri", "label": "AI應用", "uri": "https://line.me/ti/p/uvO4HDn1_X" }
+                                            }
                                         ]},
-                                        { "type": "text", "text": "Ver. 4", "size": "xxs", "color": "#eeeeee", "align": "end" }
+                                        { "type": "text", "text": "Ver. 5", "size": "xxs", "color": "#eeeeee", "align": "end" }
                                     ]
                                 },
                                 "footer": {
@@ -64,7 +73,7 @@
                                           "action": { 
                                             "type": "uri", 
                                             "label": "立即聯繫", 
-                                            "uri": "https://line.me/R/ti/p/~michael168.chin" 
+                                            "uri": "https://line.me/ti/p/uvO4HDn1_X" 
                                           }, 
                                           "style": "primary", 
                                           "color": "#00B900" 
@@ -74,12 +83,8 @@
                             }
                         }
                     ]);
-                    if (result) {
-                        liff.closeWindow();
-                    }
-                } catch (error) {
-                    alert("發送已取消");
-                }
+                    if (result) { liff.closeWindow(); }
+                } catch (error) { alert("發送已取消"); }
             }
         }
         initLiff();
