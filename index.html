@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Message 發送器</title>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f4f4f4; }
+        button { padding: 15px 30px; font-size: 18px; background-color: #00B900; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        button:disabled { background-color: #ccc; }
+    </style>
+</head>
+<body>
+    <h2>Flex Message 發送器</h2>
+    <button id="sendBtn" onclick="sendFlex()">選擇好友發送卡片</button>
+
+    <script>
+        // 初始化 LIFF
+        async function initLiff() {
+            try {
+                await liff.init({ liffId: "1596825091-r2blOZQp" }); // 填入你的 LIFF ID
+                if (!liff.isLoggedIn()) {
+                    liff.login();
+                }
+            } catch (err) {
+                console.error("LIFF 初始化失敗", err);
+            }
+        }
+
+        async function sendFlex() {
+            if (liff.isApiAvailable('shareTargetPicker')) {
+                try {
+                    const result = await liff.shareTargetPicker([
+                        {
+                            "type": "flex",
+                            "altText": "您收到了一則精美卡片",
+                            "contents": 
+                            // --- 請在此處貼上你的 JSON 內容 ---
+                            {
+                              "type": "bubble",
+                              "body": {
+                                "type": "box",
+                                "layout": "vertical",
+                                "contents": [
+                                  { "type": "text", "text": "你好！這是測試卡片", "weight": "bold", "size": "xl" }
+                                ]
+                              }
+                            }
+                            // ------------------------------
+                        }
+                    ]);
+                    if (result) {
+                        alert("訊息已成功送出！");
+                        liff.closeWindow(); // 發送後自動關閉
+                    }
+                } catch (error) {
+                    console.error("發送失敗", error);
+                }
+            } else {
+                alert("此版本 LINE 不支援此功能或權限未開啟。");
+            }
+        }
+
+        initLiff();
+    </script>
+</body>
+</html>
