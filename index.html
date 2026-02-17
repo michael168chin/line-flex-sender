@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>麥哥的專業 Flex 名片</title>
+    <title>秦國維(麥哥/Michael) 的專業 Flex 名片</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: "Microsoft JhengHei", sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f7f9fc; }
         .card { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); text-align: center; max-width: 85%; }
         h2 { color: #00B900; margin-bottom: 0.5rem; }
         p { color: #555; line-height: 1.6; margin-bottom: 1.5rem; }
-        .btn-send { padding: 16px 40px; font-size: 1.1rem; background: linear-gradient(135deg, #00E000 0%, #00B900 100%); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,185,0,0.3); }
+        .btn-send { padding: 16px 40px; font-size: 1.1rem; background: linear-gradient(135deg, #00E000 0%, #00B900 100%); color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 15px rgba(0,185,0,0.3); transition: 0.3s; }
+        .btn-send:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,185,0,0.4); }
     </style>
 </head>
 <body>
     <div class="card">
-        <h2>麥哥的數位發送器</h2>
-        <p>宏國通訊處<br>保險行銷 | 組織經營 | AI 應用</p>
+        <h2>數位名片發送器</h2>
+        <p>宏國通訊處<br>保險行銷 | 組織經營 | AI應用</p>
         <button class="btn-send" onclick="sendFlex()">選擇好友發送名片</button>
     </div>
 
@@ -31,10 +32,10 @@
         async function sendFlex() {
             if (liff.isApiAvailable('shareTargetPicker')) {
                 try {
-                    await liff.shareTargetPicker([
+                    const result = await liff.shareTargetPicker([
                         {
                             "type": "flex",
-                            "altText": "您收到來自麥哥的專業數位名片",
+                            "altText": "您收到來自 秦國維(麥哥/Michael) 的專業數位名片",
                             "contents": {
                                 "type": "bubble",
                                 "header": {
@@ -44,26 +45,30 @@
                                 },
                                 "body": {
                                     "type": "box", "layout": "vertical", "contents": [
-                                        { "type": "text", "text": "麥哥", "weight": "bold", "size": "xxl", "margin": "md" },
+                                        { "type": "text", "text": "秦國維(麥哥/Michael)", "weight": "bold", "size": "xl", "margin": "md", "wrap": true },
                                         { "type": "text", "text": "保險行銷與組織發展專家", "size": "sm", "color": "#00B900", "weight": "bold" },
                                         { "type": "separator", "margin": "lg" },
                                         { "type": "box", "layout": "vertical", "margin": "lg", "spacing": "sm", "contents": [
                                             { "type": "text", "text": "💡 專業理財諮詢", "size": "sm", "color": "#666666" },
                                             { "type": "text", "text": "🚀 團隊組織經營", "size": "sm", "color": "#666666" },
-                                            { "type": "text", "text": "🤖 AI 工具應用導入", "size": "sm", "color": "#666666" }
+                                            { "type": "text", "text": "🤖 AI工具應用導入", "size": "sm", "color": "#666666" }
                                         ]}
                                     ]
                                 },
                                 "footer": {
                                     "type": "box", "layout": "vertical", "contents": [
-                                        { "type": "button", "action": { "type": "uri", "label": "與我聯繫", "uri": "https://line.me/ti/p/你的LINE_ID" }, "style": "primary", "color": "#00B900" }
+                                        { "type": "button", "action": { "type": "uri", "label": "立即聯繫", "uri": "https://line.me/ti/p/michael168.chin" }, "style": "primary", "color": "#00B900" }
                                     ]
                                 }
                             }
                         }
                     ]);
-                    liff.closeWindow();
-                } catch (error) { alert("發送取消或失敗"); }
+                    if (result) {
+                        liff.closeWindow();
+                    }
+                } catch (error) {
+                    alert("發送已取消");
+                }
             }
         }
         initLiff();
