@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>秦國維(Michael/麥哥) 專業名片 V5</title>
+    <title>秦國維(Michael/麥哥) 專業名片 V6</title>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <style>
         body { font-family: "Microsoft JhengHei", sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f7f9fc; }
@@ -16,10 +16,10 @@
 </head>
 <body>
     <div class="card">
-        <h2>三月保戶回娘家</h2>
+        <h2>數位名片發送器</h2>
         <p>宏國通訊處<br>保險行銷 | 組織經營 | AI應用</p>
         <button class="btn-send" onclick="sendFlex()">選擇好友發送名片</button>
-        <div class="version-tag">系統版本：V5</div>
+        <div class="version-tag">系統版本：V6 (含分享功能)</div>
     </div>
 
     <script>
@@ -36,7 +36,7 @@
                     const result = await liff.shareTargetPicker([
                         {
                             "type": "flex",
-                            "altText": "秦國維(Michael/麥哥) 專業數位名片 (V5)",
+                            "altText": "您收到來自 秦國維(Michael/麥哥) 的專業數位名片",
                             "contents": {
                                 "type": "bubble",
                                 "header": {
@@ -46,8 +46,8 @@
                                 },
                                 "body": {
                                     "type": "box", "layout": "vertical", "contents": [
-                                        { "type": "text", "text": "宏國通訊處保戶回饋講座", "weight": "bold", "size": "xl", "margin": "md", "wrap": true },
-                                        { "type": "text", "text": "報名請洽您的壽險顧問", "size": "sm", "color": "#00B900", "weight": "bold" },
+                                        { "type": "text", "text": "秦國維(Michael/麥哥)", "weight": "bold", "size": "xl", "margin": "md", "wrap": true },
+                                        { "type": "text", "text": "保險行銷與組織發展專家", "size": "sm", "color": "#00B900", "weight": "bold" },
                                         { "type": "separator", "margin": "lg" },
                                         { "type": "box", "layout": "vertical", "margin": "lg", "spacing": "sm", "contents": [
                                             { 
@@ -63,20 +63,20 @@
                                                 "action": { "type": "uri", "label": "AI應用", "uri": "https://line.me/ti/p/uvO4HDn1_X" }
                                             }
                                         ]},
-                                        { "type": "text", "text": "Ver. 5", "size": "xxs", "color": "#eeeeee", "align": "end" }
+                                        { "type": "text", "text": "Ver. 6", "size": "xxs", "color": "#eeeeee", "align": "end" }
                                     ]
                                 },
                                 "footer": {
-                                    "type": "box", "layout": "vertical", "contents": [
+                                    "type": "box", "layout": "vertical", "spacing": "sm", "contents": [
                                         { 
                                           "type": "button", 
-                                          "action": { 
-                                            "type": "uri", 
-                                            "label": "立即聯繫", 
-                                            "uri": "https://line.me/ti/p/uvO4HDn1_X" 
-                                          }, 
-                                          "style": "primary", 
-                                          "color": "#00B900" 
+                                          "action": { "type": "uri", "label": "立即聯繫", "uri": "https://line.me/ti/p/uvO4HDn1_X" }, 
+                                          "style": "primary", "color": "#00B900" 
+                                        },
+                                        { 
+                                          "type": "button", 
+                                          "action": { "type": "uri", "label": "推薦給好友", "uri": "https://liff.line.me/1596825091-r2blOZQp" }, 
+                                          "style": "secondary", "color": "#555555" 
                                         }
                                     ]
                                 }
